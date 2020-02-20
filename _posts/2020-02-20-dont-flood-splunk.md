@@ -49,9 +49,7 @@ internal   MODIFY     SUCCESSFUL      51484      23351   0.453558       0      4
 
 This approach is brute force and takes up a bit of system resources, so it's not advised to run this on a production server. However, you can simply copy the logs and perform the command elsewhere.
 
-I hope you find this useful. Feel free to comment and 
-
-
+I hope you find this useful. Feel free to comment and provide feedback.
 
 [BlazeMeter]: https://www.blazemeter.com
 [JMeter]: https://jmeter.apache.org/
