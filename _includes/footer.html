@@ -1,0 +1,54 @@
+<footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+
+    <div class="wrapper">
+
+        <h2 class="footer-heading">{{ site.title }}</h2>
+ 
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li></ul>
+                {%- include social.html -%}
+                <br />
+                <a href="https://www.zibernetics.com" target="_blank"><img src="/assets/img/black-badge-bluez.png" height="25%" width="25%" ></a>
+            </div>
+
+            <div class="footer-col">
+                <p>{{ site.description }}</p>
+            </div>
+
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    {% if site.github_username %}
+                        <li>
+                        <iframe src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+                        </li>
+                    {% endif %}
+
+                    {% if site.twitter_username %}
+                        <li>
+                            <a href="https://twitter.com/{{ site.twitter_username }}" class="twitter-follow-button" data-show-count="false">Follow @{{ site.twitter_username }}</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-via="{{ site.twitter_username }}">Tweet</a> this page.
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+                    </li>
+                </ul>
+                <p class="feed-subscribe">
+                  <a href="{{ 'feed.xml' | relative_url }}">
+                    <svg class="svg-icon orange">
+                      <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
+                    </svg><span>Subscribe</span>
+                  </a>
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</footer>
