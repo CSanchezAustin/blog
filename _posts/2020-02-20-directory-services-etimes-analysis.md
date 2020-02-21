@@ -3,6 +3,7 @@ layout: post
 title: "Directory Services etime Analysis"
 subtitle:  "Or Splunk on a budget..."
 categories: identity opendj
+readtime: 10 mins.
 ---
 I was recently preparing for an upcoming live TV event where participants can vote for their favorite artist. I do this before every voting season. My testing consists of running [JMeter] load testing on [BlazeMeter] to simulate the high volume spikes we get during show callouts, such as Save your Favorite Artist from being sent home **NOW!!** Long story short, I forgot to disable [Splunk] log forwarding during the test and started pushing o our license limit. Since it's a shared resource and has daily limits, an hour or two of load testing can impact other users, and even shutdown logging in the case of repeated incidents. Ack.
 
