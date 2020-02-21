@@ -3,15 +3,16 @@ layout: post
 title: "Directory Services etime Analysis"
 subtitle:  "Or Splunk on a budget..."
 categories: identity opendj
-readtime: 10 mins.
+readtime: 10 min read
+author: Chris Sanchez
 ---
-I was recently preparing for an upcoming live TV event where participants can vote for their favorite artist. I do this before every voting season. My testing consists of running [JMeter] load testing on [BlazeMeter] to simulate the high volume spikes we get during show callouts, such as Save your Favorite Artist from being sent home **NOW!!** Long story short, I forgot to disable [Splunk] log forwarding during the test and started pushing o our license limit. Since it's a shared resource and has daily limits, an hour or two of load testing can impact other users, and even shutdown logging in the case of repeated incidents. Ack.
+I was recently preparing for an upcoming live TV event where participants can vote for their favorite artist. I do this before every voting season. My testing consists of running [JMeter]{:target="_blank"} load testing on [BlazeMeter]{:target="_blank"} to simulate the high volume spikes we get during show callouts, such as Save your Favorite Artist from being sent home **NOW!!** Long story short, I forgot to disable [Splunk]{:target="_blank"} log forwarding during the test and started pushing o our license limit. Since it's a shared resource and has daily limits, an hour or two of load testing can impact other users, and even shutdown logging in the case of repeated incidents. Ack.
 
-That presented a problem because my target for analysis was [ForgeRock Directory Services] (an LDAP Server) and what I was trying to evaluate were response times (or `etimes` as it's known) for different LDAP calls. Without Splunk logs I'd be blind. Well almost blind. I still have audit logs in json format on the Directory Services environment that I can use for analysis. It's a bit of a pain because Splunk has some really nice built-in functions for [advanced statistics] and can aggregate all logs in the cluster. But it would have to do.
+That presented a problem because my target for analysis was [ForgeRock Directory Services]{:target="_blank"} (an LDAP Server) and what I was trying to evaluate were response times (or `etimes` as it's known) for different LDAP calls. Without Splunk logs I'd be blind. Well almost blind. I still have audit logs in json format on the Directory Services environment that I can use for analysis. It's a bit of a pain because Splunk has some really nice built-in functions for [advanced statistics]{:target="_blank"} and can aggregate all logs in the cluster. But it would have to do.
 
 Since my analysis focused on `etimes` I needed typical stats such as min, max, median, 90, 95, 99 percentiles, and standard deviation. All I had to do was calculate all the things that Splunk gave me for free. Easy, right? I decided to keep it simple and stick to tools that I already had available in my Directory Services environment - `bash`, `jq`, and `awk`. The good news is Directory Services can be configured to log audit data in json format.
 
-After a session with [StackOverflow] the solution I came up with would use `jq` to extract all the data I cared about. Then I would pipe that into an `awk` program to process the data, collect statistics and, print a report. StackOverflow taught me a bit for calculating [standard deviation using awk]. 
+After a session with [StackOverflow]{:target="_blank"} the solution I came up with would use `jq` to extract all the data I cared about. Then I would pipe that into an `awk` program to process the data, collect statistics and, print a report. StackOverflow taught me a bit for calculating [standard deviation using awk]{:target="_blank"}. 
 
 Here's the gist for the bash command I wrote that I'll walk you though in the comments. Also, I'd appreciate some feedback on ways to improve that `awk` command. 
 
