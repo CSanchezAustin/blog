@@ -1,26 +1,22 @@
 ---
 layout: post
-title:  "Don't Flood Splunk"
-categories: identity opendjA
-comments: true
+title: "Directory Services etime Analysis"
+subtitle:  "Or Splunk on a budget..."
+categories: identity opendj
 ---
-I was recently preparing for an upcoming live TV event where participants can vote for their favorite artist. I do this before every voting season. My testing consists of running [JMeter] load testing on [BlazeMeter] to simulate the high volume spikes we get during show callouts, such as Save your Favorite Artist from being sent home **NOW!!** Long story short, I forgot to disable [Splunk] log forwarding during the test. Since it's a shared resource and has daily limits an hour or two of load testing can impact users and even shutdown logging in the case of repeated incidents. Akk.
+I was recently preparing for an upcoming live TV event where participants can vote for their favorite artist. I do this before every voting season. My testing consists of running [JMeter] load testing on [BlazeMeter] to simulate the high volume spikes we get during show callouts, such as Save your Favorite Artist from being sent home **NOW!!** Long story short, I forgot to disable [Splunk] log forwarding during the test and started pushing o our license limit. Since it's a shared resource and has daily limits, an hour or two of load testing can impact other users, and even shutdown logging in the case of repeated incidents. Ack.
 
-That presented a problem because on of the targets, and LDAP directory [ForgeRock Directory Services] and one of the things I was trying to evaluate was the response times for LDAP calls, or `etimes` as it's known. Since I still have logs locally on an instance of Directory Services I can analyze them. It's still a bit of a pain because Splunk has some really nice built-in functions for [advanced statistics].
+That presented a problem because my target for analysis was [ForgeRock Directory Services] (an LDAP Server) and what I was trying to evaluate were response times (or `etimes` as it's known) for different LDAP calls. Without Splunk logs I'd be blind. Well almost blind. I still have audit logs in json format on the Directory Services environment that I can use for analysis. It's a bit of a pain because Splunk has some really nice built-in functions for [advanced statistics] and can aggregate all logs in the cluster. But it would have to do.
 
-Since my analysis focused on `etimes` I needed typical stats such as median, percentiles and standard deviation. Again, simple in Splunk but now I have to calculate these stats on the fly. The solution I came up with would test my [StackOverflow] and Linux fu. I decided to keep it simple and stick to tools that I already had available on my Directory Services environment. The good news is Directory Services can be configured to log in json format. Cool.
+Since my analysis focused on `etimes` I needed typical stats such as min, max, median, 90, 95, 99 percentiles, and standard deviation. All I had to do was calculate all the things that Splunk gave me for free. Easy, right? I decided to keep it simple and stick to tools that I already had available in my Directory Services environment - `bash`, `jq`, and `awk`. The good news is Directory Services can be configured to log audit data in json format.
 
-My toolset would include:
-- Bash
-- jq
-- awk
-- Patience
+After a session with [StackOverflow] the solution I came up with would use `jq` to extract all the data I cared about. Then I would pipe that into an `awk` program to process the data, collect statistics and, print a report. StackOverflow taught me a bit for calculating [standard deviation using awk]. 
 
-StackOverflow taught me a bit for calculating [standard deviation using awk]. Here's the gist for the bash command I wrote that I'll walk you though in the comments. Also, I'd appreciate some feedback on ways to improve that `awk` command. 
+Here's the gist for the bash command I wrote that I'll walk you though in the comments. Also, I'd appreciate some feedback on ways to improve that `awk` command. 
 
 {% gist 049670fde05c1b991c12e81821a76518 %}
 
-This is an example of the report is produces:
+This is an example of the report produced:
 
 ~~~~~~
 Protocol   Operation  Status             Tx       Time     Median     Min     Max      90      95      99     StdDev
@@ -49,7 +45,7 @@ internal   MODIFY     SUCCESSFUL      51484      23351   0.453558       0      4
 
 This approach is brute force and takes up a bit of system resources, so it's not advised to run this on a production server. However, you can simply copy the logs and perform the command elsewhere.
 
-I hope you find this useful. Feel free to comment and provide feedback.
+I hope you find this useful. Feel free to submit a PR for this article if you have improvements.
 
 [BlazeMeter]: https://www.blazemeter.com
 [JMeter]: https://jmeter.apache.org/
