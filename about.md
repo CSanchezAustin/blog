@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-![](/assets/img/wile-e-coyote-business-card.png){: height="50%" width="50%"}
+![](/assets/img/wile-e-coyote-business-card.png){: height="50%" width="50%" .center-image}
 
 
 Work
