@@ -2,7 +2,7 @@
 layout: post
 title: "Fixing Directory Services conflicted entries"
 subtitle:  "Or Mr. Fixit is conflicted..."
-categories: [TechNotes]
+categories: [TechNote, identity, opendj, bash]
 tags: [identity, opendj, bash]
 readtime: 2 min read
 author: Chris Sanchez

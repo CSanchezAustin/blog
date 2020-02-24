@@ -2,7 +2,8 @@
 layout: post
 title: "Bash shell completion for OpenAM/OpenDJ"
 subtitle:  "Identity Fabric Tech Note"
-categories: identity opendj bash forgerock openam technote
+categories: [TechNote, opendj, openam]
+tags: [identity opendj bash forgerock openam]
 readtime: 2 min read
 author: Chris Sanchez
 ---
