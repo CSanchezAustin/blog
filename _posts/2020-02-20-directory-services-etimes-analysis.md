@@ -2,7 +2,7 @@
 layout: post
 title: "Directory Services etime Analysis"
 subtitle:  "Or Splunk on a budget..."
-categories: [identity, opendj]
+tags: identity opendj
 readtime: 10 min read
 author: Chris Sanchez
 ---

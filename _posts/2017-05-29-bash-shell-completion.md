@@ -1,9 +1,8 @@
 ---
 layout: post
 title: "Bash shell completion for OpenAM/OpenDJ"
-subtitle:  "Identity Fabric Tech Note"
-categories: [TechNote, opendj, openam]
-tags: [identity opendj bash forgerock openam]
+subtitle:  "Or let the tab do the trick"
+tags: identity opendj bash openam
 readtime: 2 min read
 author: Chris Sanchez
 ---
