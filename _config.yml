@@ -34,8 +34,10 @@ markdown: kramdown
 show_excerpts: true
 plugins:
   - jekyll-feed
-  - jekyll-category-pages
+  - jekyll-seo-tag
   - jekyll-paginate
+
+google_analytics_tracking_id: UA-81623304-3
 
 # Exclude from processing.
 # The following items will not be processed, by default.
