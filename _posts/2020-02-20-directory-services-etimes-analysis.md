@@ -14,7 +14,7 @@ Since my analysis focused on `etimes` I needed typical stats such as min, max, m
 
 After a session with [StackOverflow]{:target="_blank"} the solution I came up with would use `jq` to extract all the data I cared about. Then I would pipe that into an `awk` program to process the data, collect statistics and, print a report. StackOverflow taught me a bit for calculating [standard deviation using awk]{:target="_blank"}. 
 
-Here's the gist for the bash command I wrote that I'll walk you though in the comments. Also, I'd appreciate some feedback on ways to improve that `awk` command. 
+Here's the gist for the bash command I wrote that I'll walk you through in the comments. Also, I'd appreciate some feedback on ways to improve that `awk` command. 
 
 {% gist 049670fde05c1b991c12e81821a76518 %}
 
