@@ -38,7 +38,7 @@ Date (YYYY-MM-DDThh:mm:ss.uuu) YYYY - year, MM - month, DD - day, hh - hour, mm 
  IMPORTANT NOTE: when specifying a startDate or endDate, do NOT include the Z timezone designation suffix
 ~~~~ 
 
-Take note that if you are using startDate and/or endDate, you have to use a date without the trailing `Z`. This is because Linux date calculation is used generate comparable numbers used for filtering in the awk script. For example, if you pass `startDate`, the following code will generate comparable numbers. 
+Take note that if you are using `startDate` and/or `endDate`, you have to use a date without the trailing `Z`. This is because Linux date utility is used to generate comparable numbers used for filtering in the awk script. For example, if you pass `startDate`, the following code will generate comparable numbers. 
 ~~~~
         # relative to startTS
         startTS=$(date +%Y%m%d%H%M%S%3N --date "${startDate}")
