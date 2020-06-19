@@ -74,6 +74,59 @@ internal   MODIFY     SUCCESSFUL     111995      54351   0.485298       0     22
                           Total:    1213752    3116405    2.56758
 ~~~~~~
 
+Output in CSV
+~~~~~~
+Protocol,Operation,Status,Tx,Time,Median,Min,Max,90,95,99,StdDev
+LDAP,ADD,SUCCESSFUL,73892,472145,6.38966,1,325,11,17,45,12.1267
+LDAP,BIND,FAILED,1910,7088,3.71099,0,169,4,15,76,15.0926
+LDAP,BIND,SUCCESSFUL,11929,48188,4.03957,0,222,5,13,91,14.2503
+LDAP,CONNECT,SUCCESSFUL,1887,0,0,0,0,0,0,0,0
+LDAP,DISCONNECT,SUCCESSFUL,1885,0,0,0,0,0,0,0,0
+LDAP,EXTENDED,SUCCESSFUL,260,65,0.25,0,22,1,1,3,1.47381
+LDAP,MODIFY,FAILED,8,8,1,0,6,6,6,6,1.93649
+LDAP,MODIFY,SUCCESSFUL,99,146,1.47475,0,24,2,3,24,2.44678
+LDAP,SEARCH,FAILED,58530,102169,1.74558,0,169,3,7,23,6.0059
+LDAP,SEARCH,SUCCESSFUL,580032,1345135,2.31907,0,308,3,5,57,10.626
+LDAP,UNBIND,null,325,0,0,null,null,null,null,null,0
+LDAPS,BIND,SUCCESSFUL,1,14,14,14,14,14,14,14,0
+LDAPS,CONNECT,SUCCESSFUL,1,0,0,0,0,0,0,0,0
+LDAPS,SEARCH,SUCCESSFUL,1,34,34,34,34,34,34,34,0
+internal,ADD,SUCCESSFUL,370997,1087062,2.93011,1,330,4,5,9,5.74374
+internal,MODIFY,SUCCESSFUL,111995,54351,0.485298,0,223,1,1,2,2.44537
+~~~~~~
+
+Output in JSON (partial)
+~~~~~~
+{
+  "Protocol": "LDAP",
+  "Operation": "ADD",
+  "Status": "SUCCESSFUL",
+  "Tx": 73892,
+  "Time": 472145,
+  "Median": 6.38966,
+  "Min": 1,
+  "Max": 325,
+  "90": 11,
+  "95": 17,
+  "99": 45,
+  "StdDev": 12.1267
+}
+{
+  "Protocol": "LDAP",
+  "Operation": "BIND",
+  "Status": "FAILED",
+  "Tx": 1910,
+  "Time": 7088,
+  "Median": 3.71099,
+  "Min": 0,
+  "Max": 169,
+  "90": 4,
+  "95": 15,
+  "99": 76,
+  "StdDev": 15.0926
+}
+...
+~~~~~~
 Same disclaimer as last post - this approach is brute force and takes up a bit of system resources, so it's not advised to run this on a production server.
 
 I hope you find this useful. Feel free to submit a PR for this article if you have improvements.
