@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Directory Services etime redux"
-subtitle:  "Or you can always tweak it..."
+subtitle:  "Or there's always room for seconds"
 tags: identity opendj
 readtime: 2 min read
 author: Chris Sanchez
@@ -74,7 +74,7 @@ internal   MODIFY     SUCCESSFUL     111995      54351   0.485298       0     22
                           Total:    1213752    3116405    2.56758
 ~~~~~~
 
-This approach is brute force and takes up a bit of system resources, so it's not advised to run this on a production server. However, you can simply copy the logs and perform the command elsewhere.
+Same disclaimer as last post - this approach is brute force and takes up a bit of system resources, so it's not advised to run this on a production server.
 
 I hope you find this useful. Feel free to submit a PR for this article if you have improvements.
 
